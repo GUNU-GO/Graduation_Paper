@@ -1,18 +1,17 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
+# In[32]:
 
 
 import numpy as np
 import matplotlib.pyplot as plt
 
 
-# In[50]:
+# In[79]:
 
 
 def Rate_coefficient(Te):
-    
     ##### Rate coefficient calculation #####
     # ref. R. K. Janev, et al., Elementary Processes in Hydrogen-Helium Plasmas, Springer (1987)
     
@@ -37,28 +36,22 @@ def Rate_coefficient(Te):
     # H3+ + e -> H+ + 2H + e, Reaction 2.2.16 E = 14
     k10 = np.exp(-3.078408636631e+01+1.509421488513e+01*np.log(Te)-7.349167207324e+00*(np.log(Te))**2+2.320966107642e+00*(np.log(Te))**3-4.818077551719e-01*(np.log(Te))**4+6.389229162737e-02*(np.log(Te))**5-5.161880953089e-03*(np.log(Te))**6+2.303985092606e-04*(np.log(Te))**7-4.344846146197e-06*(np.log(Te))**8)
     # H2+ + H2 -> H3+ + H, Reaction 4.3.3 E = 0
-    k11 = 2.1e-9  #for 0.3eV Hydrogen atom
-    # H(1s) + e -> H(2p) + e, Reaction 2.1.1 E = 10.2 
-    k12 = np.exp(-4.991816994666e+02+6.320402753550e+02*np.log(Te)-3.652213752597e+02*(np.log(Te))**2+1.165699645892e+02*(np.log(Te))**3-2.250557133404e+01 *(np.log(Te))**4+2.695101794905e+00*(np.log(Te))**5-1.958839549072e-01*(np.log(Te))**6+7.917154881015e-03*(np.log(Te))**7-1.365267533573e-04*(np.log(Te))**8)
-    # H(1s) + e -> H(2s) + e, Reaction 2.1.2 E = 10.2
-    k13 = np.exp(-1.773223143614e+03+2.868021256119e+03*np.log(Te)-2.019174875577e+03*(np.log(Te))**2+7.913558639288e+02*(np.log(Te))**3-1.890880793711e+02*(np.log(Te))**4+2.824418882926e+01*(np.log(Te))**5-2.579116350676e+00*(np.log(Te))**6+1.318146425812e-01*(np.log(Te))**7-2.890652428531e-03*(np.log(Te))**8)
-    # H2 + e -> H2 + e, Reaction 2,2,2 E = 12.1
-    k14 = np.exp(-4.293519441750e+02+5.112210939087e+02*np.log(Te)- 2.848127939455e+02*(np.log(Te))**2+8.831033879636e+01*(np.log(Te))**3-1.665959177505e+01*(np.log(Te))**4+1.957960915869e+00*(np.log(Te))**5-1.401282416514e-01*(np.log(Te))**6+5.591134833381e-03*(np.log(Te))**7-9.537010324465e-05*(np.log(Te))**8)
-    
-    return k1,k2,k3,k4,k5,k6,k7,k8,k9,k10,k11*np.ones((len(Te))),k12,k13,k14
+    k11 = 1.2194578959081685e-09  #for 0.3eV Hydrogen atom
+    k12 = np.exp(-3.081902926338e+01+1.038866780735e+01*np.log(Te)-4.259768348687e+00*(np.log(Te))**2+1.181228673120e+00*(np.log(Te))**3-2.277513907465e-01*(np.log(Te))**4+2.900576728856e-02*(np.log(Te))**5-2.287591474628e-03*(np.log(Te))**6+1.004346442778e-04*(np.log(Te))**7-1.869930069131e-06*(np.log(Te))**8)
+    return k1,k2,k3,k4,k5,k6,k7,k8,k9,k10,k11*np.ones((len(Te))),k12
 
 
-# In[51]:
+# In[80]:
 
 
-NumReaction = 14
+NumReaction = 12
 Te = np.arange(1e-1,1e3,1e-1)
 name_list = []
 for i in range(NumReaction):
     name_list.append('k'+ str(i+1))
 
 
-# In[53]:
+# In[81]:
 
 
 plt.figure(figsize=(20,20))
