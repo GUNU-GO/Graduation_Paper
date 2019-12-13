@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[32]:
+# In[2]:
 
 
 import numpy as np
 import matplotlib.pyplot as plt
 
 
-# In[79]:
+# In[6]:
 
 
 def Rate_coefficient(Te):
@@ -41,17 +41,17 @@ def Rate_coefficient(Te):
     return k1,k2,k3,k4,k5,k6,k7,k8,k9,k10,k11*np.ones((len(Te))),k12
 
 
-# In[80]:
+# In[7]:
 
 
 NumReaction = 12
-Te = np.arange(1e-1,1e3,1e-1)
+Te = np.arange(1e-2,1e3,1e-1)
 name_list = []
 for i in range(NumReaction):
     name_list.append('k'+ str(i+1))
 
 
-# In[81]:
+# In[8]:
 
 
 plt.figure(figsize=(20,20))
@@ -60,9 +60,15 @@ for i in range(NumReaction):
     plt.xscale('log')
     plt.yscale('log')
     plt.grid(b=True)
-    plt.ylim(1e-12)
+    plt.ylim(1e-15,1e-6)
     plt.legend(name_list)
 plt.show()
+
+
+# In[ ]:
+
+
+
 
 
 # In[ ]:
